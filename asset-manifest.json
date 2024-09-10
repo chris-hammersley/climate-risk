@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/climate-risk/static/css/main.8b46183c.css",
-    "main.js": "/climate-risk/static/js/main.d006eb8a.js",
+    "main.js": "/climate-risk/static/js/main.1583a674.js",
     "static/js/453.87818c86.chunk.js": "/climate-risk/static/js/453.87818c86.chunk.js",
     "index.html": "/climate-risk/index.html",
     "main.8b46183c.css.map": "/climate-risk/static/css/main.8b46183c.css.map",
-    "main.d006eb8a.js.map": "/climate-risk/static/js/main.d006eb8a.js.map",
+    "main.1583a674.js.map": "/climate-risk/static/js/main.1583a674.js.map",
     "453.87818c86.chunk.js.map": "/climate-risk/static/js/453.87818c86.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.8b46183c.css",
-    "static/js/main.d006eb8a.js"
+    "static/js/main.1583a674.js"
   ]
 }
