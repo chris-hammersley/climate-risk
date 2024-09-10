@@ -204,7 +204,7 @@ function App() {
             <li><a href="https://www.planette.ai/contact-us">Contact us for a discovery call and demo</a></li>
           </ul>
         </div>
-        <button onClick={exportToCSV}>Export Answers to CSV</button>
+        <button onClick={exportToCSV} className="next-button">Export Answers to CSV</button>
       </div>
     );
   }
@@ -228,7 +228,7 @@ function App() {
         ))}
       </div>
       {question.multiSelect && (
-        <button onClick={() => setCurrentQuestion(currentQuestion + 1)}>Next</button>
+        <button onClick={() => setCurrentQuestion(currentQuestion + 1)} className="next-button">Next</button>
       )}
     </div>
   );
