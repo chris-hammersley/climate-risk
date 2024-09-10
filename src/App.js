@@ -111,6 +111,26 @@ const commonQuestions = [
     text: "How prepared do you feel for future climate-related risks?",
     options: ["Very prepared", "Somewhat prepared", "Not very prepared", "Not at all prepared"],
     multiSelect: false
+  },
+  {
+    text: "Do you currently use weather or climate forecasting data? (Select all that apply)",
+    options: ["National Weather Service", "ECMWF Forecasts", "NOAA Forecasts", "In-house Meteorological Service", "Other Third-Party Provider", "No, we don't use any"],
+    multiSelect: true
+  },
+  {
+    text: "Where does extreme weather impact your business operations? (Select all that apply)",
+    options: ["Agricultural Productivity", "Energy Production and Consumption", "Infrastructure Damage, Repairs, and Resilience", "Supply Chain Disruptions", "Insurance Claims and Payouts", "Financial Investments", "Regulatory Compliance", "Other"],
+    multiSelect: true
+  },
+  {
+    text: "Which of your current processes are ready for extreme weather events? (Select all that apply)",
+    options: ["Operational Processes", "Supply Chain Management", "Risk Management Strategies", "Emergency Response Protocols", "None"],
+    multiSelect: true
+  },
+  {
+    text: "Which of the following services would be most beneficial for your business in mitigating climate risk? (Select all that apply)",
+    options: ["Adaptive Risk Management", "Advanced Site Selection Intelligence", "Energy Production/Demand Forecasting", "Other", "None of the Above"],
+    multiSelect: true
   }
 ];
 
@@ -135,13 +155,21 @@ function App() {
         setAnswers({ ...answers, [currentQuestion]: updatedAnswers });
       } else {
         setAnswers({ ...answers, [currentQuestion]: answer });
-        if (currentQuestion < industryQuestions[industry].length + commonQuestions.length) {
-          setCurrentQuestion(currentQuestion + 1);
-        } else {
-          setShowResults(true);
-        }
+        moveToNextQuestion();
       }
     }
+  };
+
+  const moveToNextQuestion = () => {
+    if (currentQuestion < getTotalQuestions() - 1) {
+      setCurrentQuestion(currentQuestion + 1);
+    } else {
+      setShowResults(true);
+    }
+  };
+
+  const getTotalQuestions = () => {
+    return industry ? industryQuestions[industry].length + commonQuestions.length + 1 : Object.keys(industryQuestions).length;
   };
 
   const getCurrentQuestion = () => {
@@ -214,7 +242,7 @@ function App() {
   return (
     <div className="App">
       <h1>5-Minute Climate Risk Assessment</h1>
-      <p>Question {currentQuestion + 1} of {industryQuestions[industry] ? industryQuestions[industry].length + commonQuestions.length + 1 : Object.keys(industryQuestions).length}</p>
+      <p>Question {currentQuestion + 1} of {getTotalQuestions()}</p>
       <h2>{question.text}</h2>
       <div className="options">
         {question.options.map((option, index) => (
@@ -228,7 +256,7 @@ function App() {
         ))}
       </div>
       {question.multiSelect && (
-        <button onClick={() => setCurrentQuestion(currentQuestion + 1)} className="next-button">Next</button>
+        <button onClick={moveToNextQuestion} className="next-button">Next</button>
       )}
     </div>
   );
